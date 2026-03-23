@@ -11,13 +11,7 @@ Classifies airline tweets into Positive / Neutral / Negative using TF-IDF + Logi
 
 ## Screenshots
 ### Streamlit Dashboard
-![Single Tweet Analysis](screenshots/streamlit_single.png)
-![Batch Analysis](screenshots/streamlit_batch.png)
-![Department Routing](screenshots/streamlit_departments.png)
-
-### API
-![API Docs](screenshots/api_docs.png)
-![API Response](screenshots/api_response.png)
+![App Demo](screenshots/streamlit_sa_demo.png)
 
 
 ## 🔍 What Makes This Unique
