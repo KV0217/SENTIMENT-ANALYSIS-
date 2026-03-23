@@ -2,6 +2,24 @@
 
 Classifies airline tweets into Positive / Neutral / Negative using TF-IDF + Logistic Regression (76.9% accuracy) and BERT transformer. Features Aspect-Based Sentiment Analysis (ABSA), SQL Brand Analysis, WordCloud, Airline Brand Scorecard, and a live dual-model prediction system.
 
+## Live Deployments
+| | URL |
+|--|--|
+| REST API | https://sentiment-analysis-api-oegw.onrender.com |
+| API Docs | https://sentiment-analysis-api-oegw.onrender.com/docs |
+| Streamlit App | https://sentiment-analysis-api-kv.streamlit.app |
+
+## Screenshots
+### Streamlit Dashboard
+![Single Tweet Analysis](screenshots/streamlit_single.png)
+![Batch Analysis](screenshots/streamlit_batch.png)
+![Department Routing](screenshots/streamlit_departments.png)
+
+### API
+![API Docs](screenshots/api_docs.png)
+![API Response](screenshots/api_response.png)
+
+
 ## 🔍 What Makes This Unique
 - **Dual Model System** — TF-IDF + LR vs BERT with smart conflict resolution (BERT overrides TF-IDF on negation — "not great" → NEGATIVE)
 - **ABSA** — Aspect-Based Sentiment Analysis using clause splitting + BERT. Routes complaints to correct department (food → Catering, staff → HR, baggage → Baggage team)
@@ -15,34 +33,27 @@ Classifies airline tweets into Positive / Neutral / Negative using TF-IDF + Logi
 Twitter US Airline Sentiment — 14,640 real tweets · 3 classes
 Negative: 63% · Neutral: 21% · Positive: 16%
 
-## 🛠️ Tech Stack
-Python · Scikit-learn · XGBoost · TF-IDF · BERT · Transformers · WordCloud · SQLite · Matplotlib · Seaborn
+## What's Inside
+- TF-IDF vectorizer (15,000 features, trigrams)
+- 4-model comparison: Naive Bayes, LR, Random Forest, XGBoost
+- BERT comparison — proves domain-tuned TF-IDF beats base BERT
+- ABSA: routes complaints to Catering / HR / Operations / Baggage
+- SQL brand scorecard with PARTITION BY sentiment ranking
 
-## 📁 Project Structure
-| File | Description |
-|------|-------------|
-| `sentimnet-analysis.ipynb` | Full notebook |
-| `requirements.txt` | Dependencies |
+## ABSA Department Routing
+```json
+{
+  "aspect": "luggage", "sentiment": "negative",
+  "department": "Baggage Operations", "action": "Flag for review"
+}
+```
 
-## 🔍 Key Sections
-| # | Section | What it does |
-|---|---------|-------------|
-| 1 | Libraries | All imports |
-| 2 | Load Dataset | Tweets.csv from Kaggle |
-| 3 | EDA | 6 charts — distribution, airline, confidence |
-| 3b | SQL Brand Analysis | Scorecard · complaints · confidence bands |
-| 4 | Complaint Heatmap | Airline × Negative Reason matrix |
-| 5 | Text Cleaning | Remove @mentions, URLs, punctuation |
-| 6 | WordCloud | Word drivers per sentiment class |
-| 7 | TF-IDF | 10,000 features · unigrams + bigrams |
-| 8 | Model Comparison | NB · LR · RF · XGBoost |
-| 9 | Confusion Matrix | Counts + percentage heatmap |
-| 10 | Hyperparameter Tuning | RandomizedSearchCV on TF-IDF + LR |
-| 11 | BERT | distilbert zero-shot comparison |
-| 12 | BERT vs TF-IDF | 300-tweet accuracy comparison |
-| 13 | Brand Scorecard | Airline sentiment ranking + charts |
-| 14 | Live Prediction | Dual model + conflict resolution |
-| 15 | ABSA | Per-aspect sentiment + department routing |
+## Tech Stack
+Python · TF-IDF · BERT · HuggingFace · ABSA · FastAPI · Docker · Streamlit · SQLite · Render
+
+## Related
+- API repo: [Sentiment-Analysis-API](https://github.com/KV0217/Sentiment-Analysis-API)
+
 
 ## 📈 Model Results
 | Model | Accuracy |
