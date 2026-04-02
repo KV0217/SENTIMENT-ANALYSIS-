@@ -96,4 +96,4 @@ SELECT * FROM complaint_ranked WHERE complaint_rank <= 3
 
 ## 👤 Author
 **KAVIN VENKAT**
-[LinkedIn](www.linkedin.com/in/kavin-venkat-1710s0202) 
+[LinkedIn](https://www.linkedin.com/in/kvsherly17100210) 
